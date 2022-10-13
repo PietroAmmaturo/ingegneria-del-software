@@ -9,6 +9,8 @@ public class Main {
             System.out.println("Pluto");
         } catch (NonHaFattoEsamiException e) {
             System.out.println("non aveva fatto esami");
+        } finally {
+            System.out.println("Comunque finisco qui");
         }
 
     }
