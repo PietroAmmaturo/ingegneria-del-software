@@ -1,0 +1,36 @@
+abstract class Date {
+    public abstract String dateDistance(Date d);
+}
+
+class DayDate extends Date{
+    public String dateDistance(Date p);
+    // OVERRIDE del meotodo di Date
+
+    public String dateDistance(DayDate p);
+    // NUOVO metodo
+}
+
+class DayMonthDate extends DayDate {
+    public String dateDistance(Date p);
+    // OVERRIDE del metodo di DayDate
+
+    public String dateDistance(DayMonthDate p);
+    // NUOVO metodo
+
+    public String dateDistance(DayDate p);
+    // EREDITATO DA DATE
+}
+
+class DayMonthYearDate extends DayMonthDate {
+    public String dateDistance(Date p)
+    // OVERRIDE del metodo di DayMonthDate
+
+    public String dateDistance(DayMonthYearDate p);
+    // NUOVO metodo
+
+    public String dateDistance(DayDate p);
+    // EREDITATO DA DATE
+
+    public String dateDistance(DayMonthDate p);
+    // EREDITATO DA DAYMONTHDATE
+}

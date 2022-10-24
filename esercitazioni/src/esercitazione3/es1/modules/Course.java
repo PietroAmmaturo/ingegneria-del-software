@@ -14,7 +14,6 @@ public class Course {
         this.lecturer = lecturer;
         this.teachingAssistant = teachingAssistant;
         this.lectures = lectures;
-        this.students = students;
         this.team1 = team1;
         this.team2 = team2;
     }

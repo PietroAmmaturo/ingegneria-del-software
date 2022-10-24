@@ -1,0 +1,22 @@
+class Person {
+    public void buy(Device d, double euro);
+}
+
+class Professor extends Person {
+    public void buy(Device d, double euro);
+    // EREDITATO da Person
+
+    public void buy(Device d, int euro);
+    // NUOVO METODO
+}
+
+class FullProfessor extends Professor {
+    public void buy(Smartwatch d, int euro);
+    // NUOVO METODO
+
+    public void buy(Device d, double euro);
+    // EREDITATO da Person
+
+    public void buy(Device d, int euro);
+    // EREDITATO da Professor
+}
