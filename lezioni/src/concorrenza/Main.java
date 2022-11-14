@@ -1,7 +1,22 @@
 package concorrenza;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         // for (int i = 0; i < 1000; i++) {
         // new MyThread1(i).start();
         // }
@@ -45,6 +60,21 @@ public class Main {
         t1.join();
         t2.join();
         System.out.println("Final value: " + account.getBalance());
+
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        // li assume se quelli disponibili sono occupati, li licenzia se stanno senza fare nulla
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        executorService.submit(() -> System.out.println("Ciao"));
+        Future<Integer> resultFuture = executorService.submit(() -> 2 + 2);
+        System.out.println("Conduco la mia vita da main");
+        int result = resultFuture.get();
+        executorService.shutdown();
+
+        Map<String, Integer> m = new ConcurrentHashMap<>();
+        Queue<Integer> queue = new ArrayBlockingQueue<>(4);
+        List<Integer> listaNonSync = new ArrayList<>();
+        List<Integer> listaSync = Collections.synchronizedList(listaNonSync);
     }
 }
 
